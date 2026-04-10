@@ -43,7 +43,7 @@ function App() {
         habitFrequency: newHabit.habitFrequency
       }
     )
-    setHabitsList([...habitsList, newHabit]);
+  
   }
 
   async function completeMethod (addCompletion) {
@@ -125,8 +125,8 @@ useEffect(() => {
 
       await Promise.all(deletions);
 
-      setHabitsList(habitsList.filter(habit => habit.id != habit2.id))
-    setCompletedHabits(completedHabits.filter(habit => habit.id != habit2.id))
+      setHabitsList(prev => prev.filter(habit => habit.id != habit2.id))
+    setCompletedHabits(prev => prev.filter(habit => habit.habitId != habit2.id))
     } catch (err) {
       console.log(err)
     }
