@@ -43,7 +43,7 @@ export function MonthlyBreakDown({completedHabits, habitId}) {
     console.log(monthlyData)
     return (
 
-        <div>
+        <div className="">
 
             <MonthlyChart monthlyData={monthlyData}/>
         </div>

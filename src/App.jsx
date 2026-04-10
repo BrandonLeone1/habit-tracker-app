@@ -1,7 +1,10 @@
 import { useState } from 'react'
 import { AddHabit } from './components/AddHabit';
 import { UserHabits } from './components/UserHabits';
-
+import {Routes, Route} from 'react-router-dom';
+import { DefaultView } from './components/DefaultView';
+import { Navbar } from './components/Navbar';
+import { Charts } from './components/Charts';
 
 function App() {
 
@@ -34,15 +37,35 @@ function App() {
     }
   }
 
-
-  
+  function deleteMethod(habit2) {
+    setHabitsList(habitsList.filter(habit => habit.habitTitle != habit2.habitTitle))
+    setCompletedHabits(completedHabits.filter(habit => habit.habitId != habit2.habitTitle))
+  }
 
   return (
     <>
-      <AddHabit addMethod={addMethod}/>
-      <UserHabits habitsList={habitsList} completeMethod={completeMethod} completedHabits={completedHabits}/>
+    <div className='bg-gray-400 h-screen flex flex-col justify-center items-center'>
+    <Navbar />
+    <Routes>
+      <Route path='/' element={<DefaultView />}>
+
+      </Route>
+
+      <Route path='/add-habit' element={<AddHabit addMethod={addMethod}/>} >
+
+      </Route>
+
+      <Route path='/habits'element={<UserHabits habitsList={habitsList} completeMethod={completeMethod} completedHabits={completedHabits} deleteMethod={deleteMethod}/>}>
+      </Route>
+
+      <Route path='/charts' element={<Charts habitsList={habitsList} completedHabits={completedHabits} />}>
+          
+      </Route>
+
+    </Routes>
       
       
+      </div>
     </>
   )
 }
