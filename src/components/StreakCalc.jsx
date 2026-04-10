@@ -42,8 +42,7 @@ useEffect(() => {
 )
   return (
     <>
-    <button className="block mr-auto mt-10">Streak Counter</button>
-    <h2 className="mb-20">{habitId} streak: {streakCount}</h2>
+    <h2 className="font-[poppins] text-lg text-center"> | streak: {streakCount}</h2>
     </>
   );
 }

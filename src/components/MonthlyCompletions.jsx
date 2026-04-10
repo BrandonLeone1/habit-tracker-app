@@ -32,7 +32,7 @@ export function MonthlyCompletions ({completedHabits, habitId}) {
     
     return (
         <div>
-            <button>Completed this month (different days): {monthlyCompletionsAmt}</button>
+            <p className="font-[inter] text-zinc-950">Completions this month (different days): {monthlyCompletionsAmt}</p>
         </div>
     );
 }

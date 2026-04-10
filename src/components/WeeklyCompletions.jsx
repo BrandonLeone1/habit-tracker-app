@@ -32,7 +32,7 @@ export function WeeklyCompletions ({completedHabits, habitId}) {
     
     return (
         <div>
-            <button>Completions this week (different days): {weeklyCompletionAmt}</button>
+            <p className="font-[inter] text-zinc-950">Completions this week (different days): {weeklyCompletionAmt}</p>
         </div>
     );
 }

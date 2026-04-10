@@ -7,7 +7,7 @@ export function MonthlyChart ({monthlyData}) {
                 <XAxis dataKey="day" />
                 <YAxis />
                 <Tooltip />
-                <Bar dataKey="count" fill="#00bcd4" />
+                <Bar dataKey="count" fill="#18181B" />
             </BarChart>
         </ResponsiveContainer>
     );

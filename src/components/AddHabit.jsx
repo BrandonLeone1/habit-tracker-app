@@ -32,7 +32,7 @@ export function AddHabit({addMethod}) {
             <select
             value={habitFreq} 
             onChange={(e) => setHabitFreq(e.target.value)}
-            className="bg-zinc-950 text-white md:px-4 md:py-3 p-3 font-[inter] text-lg max-h-12.5 min-w-73 cursor-pointer">
+            className="bg-zinc-950 text-white md:px-4 md:py-3 p-3 font-[inter] text-lg max-h-12.5 min-w-73 cursor-pointer rounded-3xl">
                 <option 
                 className=""
                 defaultValue>Choose habit frequency</option>
@@ -44,14 +44,14 @@ export function AddHabit({addMethod}) {
             type="text"
             placeholder="Enter habit..."
             required
-            className="block bg-zinc-950 text-white md:px-4 md:py-3 p-3 font-[inter] text-lg max-h-12.5 min-w-73"
+            className="block bg-zinc-950 text-white placeholder:text-white md:px-4 md:py-3 p-3 font-[inter] text-lg max-h-12.5 min-w-73 rounded-3xl"
             onChange={(e) => setHabitName(e.target.value)}
             value={habitName}
             />
 
             <button 
             onClick={handleClick}
-            className="block bg-zinc-950 text-white font-[inter] md:px-12 md:py-3 p-3 text-lg max-h-12.5 rounded-3xl cursor-pointer hover:-translate-y-1 active:scale-95 duration-300">
+            className="block bg-zinc-950 text-white font-[inter] md:px-12 md:py-3 p-3 text-lg max-h-12.5 min-w-18.75 rounded-3xl cursor-pointer shadow-lg hover:shadow-2xl hover:-translate-y-1 active:scale-95 duration-300">
                 Add
             </button>
             

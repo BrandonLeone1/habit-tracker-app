@@ -41,12 +41,18 @@ export function UserHabits ({habitsList, completeMethod, completedHabits, delete
                 <hr className="text-gray-600 w-122.25 max-w-full mx-auto my-3"/>
                 {
                     habitsList.map((habit => (
-                        <div key={habit.id} className="mt-10 flex flex-col bg-zinc-700 gap-4">
-                            <span onClick={() => handleDel(habit)}>x</span>
-                            <h2>Habit: {habit.habitTitle}</h2>
-                            <p>Desired frequency: {habit.habitFrequency}</p>
+                        <div key={habit.id} className="mt-10 flex flex-col relative bg-zinc-800 rounded-2xl text-white gap-8 p-8">
+                            <span onClick={() => handleDel(habit)} className="absolute top-1 right-4 font-[poppins] text-2xl cursor-pointer hover:scale-95 duration-75">x</span>
+                            
+                            <div className="flex gap-2 justify-left items-center mt-4">
+                                <h2 className="text-lg font-[poppins] text-center">Habit: {habit.habitTitle}</h2>
+                                <StreakCalc completedHabits={completedHabits} habitId={habit.habitTitle}/>
+                            </div>
+                            <p className="text-md md:text-left font-[inter] text-center">Desired frequency: {habit.habitFrequency}</p>
+                            
                             <input 
                             type="checkbox"
+                            className="block md:mx-0 mx-auto appearance-none w-6.25 h-6.25 bg-gray-100 rounded checked:before:content-['✔'] checked:before:block checked:before:text-2xl checked:before:text-center checked:before:-mt-1 text-black cursor-pointer checked:bg-gray-300 duration-300"
                             checked={!!confirmComplete[habit.id]}
                             onChange={() => setConfirmComplete(prev => ({
                                 ...prev,
@@ -54,11 +60,11 @@ export function UserHabits ({habitsList, completeMethod, completedHabits, delete
                             }))}
                             />
 
-                            <button onClick={() => handleClick(habit)}>
+                            <button onClick={() => handleClick(habit)} className="font-[poppins] text-lg bg-gray-100 w-fit m-auto rounded-3xl text-zinc-950 px-2 py-1 cursor-pointer hover:-translate-y-1 duration-300 [box-shadow:0px_0px_6px_rgba(243,244,246,0.5)] hover:[box-shadow:0px_2px_8px_rgba(243,244,246,0.6)] active:scale-95">
                                 Add completion
                             </button>
 
-                            <StreakCalc completedHabits={completedHabits} habitId={habit.habitTitle} className="mb-10"/>
+                            
                             
 
                         </div>
