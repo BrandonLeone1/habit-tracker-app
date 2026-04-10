@@ -14,7 +14,7 @@ export function MonthlyBreakDown({completedHabits, habitId}) {
         let day = new Date();
         day.setDate(today.getDate() - i);
 
-        let dayString = day.toISOString().split("T")[0];
+        let dayString = day.toLocaleDateString("en-CA");
         let count = 0;
         
         for (let x = 0; x < completedHabits.length; x++) {

@@ -15,8 +15,8 @@ const [streakCount, setStreakCount] = useState(0);
         let current = sortedCompletedList[i];
         let prev = sortedCompletedList[i - 1];
         
-       const date1 = new Date(current.date);
-       const date2 = new Date(prev.date);
+       const date1 = new Date(current.date + "T00:00:00");
+       const date2 = new Date(prev.date + "T00:00:00");
 
        const diffInMs = Math.abs(date1.getTime() - date2.getTime());
 

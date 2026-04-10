@@ -15,7 +15,7 @@ export function UserHabits ({habitsList, completeMethod, completedHabits, delete
             {/* new Date().toISOString().split("T")[0] */}
             let addCompletion = {
                 habitId: habit.habitTitle,
-                date: '2026-04-09',
+                date: new Date().toLocaleDateString("en-CA"),
                 completionCount: 1 
             }
             

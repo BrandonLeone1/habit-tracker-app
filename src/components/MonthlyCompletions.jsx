@@ -8,14 +8,14 @@ export function MonthlyCompletions ({completedHabits, habitId}) {
     .sort((a,b) => new Date(a.date) - new Date(b.date));
     
     function getMonthlyCompletions () {
-        const currentDate = new Date(Date.now())
-        const oneMonthAgo = new Date(Date.now() - (30 * 24 * 60 * 60 * 1000))
+        const currentDate = new Date().toLocaleDateString("en-CA");
+        const oneMonthAgo = new Date(Date.now() - (30 * 24 * 60 * 60 * 1000)).toLocaleDateString("en-CA");
         let completionAmt = 0;
 
         for (let i = 0; i < sortedCompletedList.length; i++) {
             let current = sortedCompletedList[i];
 
-            if (new Date(current.date) >= oneMonthAgo && new Date(current.date) <= currentDate) {
+            if (current.date >= oneMonthAgo && current.date <= currentDate) {
                 completionAmt++;
             }
         }
