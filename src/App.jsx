@@ -8,12 +8,23 @@ import { Charts } from './components/Charts';
 import { motion } from 'framer-motion'
 import { collection, addDoc, onSnapshot, doc, updateDoc } from "firebase/firestore";
 import {db} from './services/Firebase'
-
-
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { useEffect } from 'react';
 
 
 
 function App() {
+
+  const auth = getAuth();
+
+  useEffect(() => {
+  const unsub = onAuthStateChanged(auth, (currentUser) => {
+    setUser(currentUser);
+    console.log("USER:", currentUser);
+  });
+
+  return () => unsub();
+  }, []);
 
   const [user, setUser] = useState(null);
 
