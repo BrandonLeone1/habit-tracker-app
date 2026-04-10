@@ -27,7 +27,7 @@ export function SignIn() {
     }
 
     return (
-        <button onClick={() => handleSignIn()}>Sign in</button>
+        <button onClick={() => handleSignIn()} className="font-[poppins] text-lg text-zinc-950 cursor-pointer ml-auto">Sign in</button>
     );
 
 }

@@ -16,7 +16,7 @@ export function SignOut() {
     }
 
 return (
-    <button onClick={() => handleSignOut()}>Sign out</button>
+    <button onClick={() => handleSignOut()} className="font-[poppins] text-lg text-zinc-950 cursor-pointer md:ml-auto">Sign out</button>
 );
 
 }
