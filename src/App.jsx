@@ -50,21 +50,20 @@ function App() {
     
     if (!user) {return}
 
-      const existing = completedHabits.find(habit => habit.habitId === addCompletion.habitId && habit.date === addCompletion.date)
-
+      const colRef = collection(db, "users", user.uid, "completions");
       
 
-      if (existing) {
-        const ref = doc(
-          db, "users", user.uid, "completions", existing.id
-        );
+      const snapshot = await getDocs(colRef);
 
-        await updateDoc(ref, {completionCount: existing.completionCount + 1})
+
+      const existing = snapshot.docs.find(doc => doc.data().habitId === addCompletion.habitId && doc.data().date === addCompletion.date)
+
+      if (existing) {
+        await updateDoc(existing.ref, {
+          completionCount: existing.data().completionCount + 1
+        })
       } else {
-        await addDoc(
-          collection(db, "users", user.uid, "completions"),
-          addCompletion
-        )
+        await addDoc(colRef, addCompletion)
       }
 
      
