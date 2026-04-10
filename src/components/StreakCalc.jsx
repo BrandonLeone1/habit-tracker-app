@@ -42,7 +42,7 @@ useEffect(() => {
 )
   return (
     <>
-    <h2 className="font-[poppins] text-lg text-center"> | streak: {streakCount}</h2>
+    <h2 className="font-[poppins] text-lg text-center">| streak: {streakCount}</h2>
     </>
   );
 }

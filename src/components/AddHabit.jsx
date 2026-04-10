@@ -1,4 +1,5 @@
 import { useState } from "react";
+import {motion} from 'framer-motion'
 
 export function AddHabit({addMethod}) {
     
@@ -21,7 +22,7 @@ export function AddHabit({addMethod}) {
     
     return (
     <>
-    <div className="bg-gray-100 w-250 max-w-[95%] min-h-135 p-10 rounded-b-2xl">
+    <div className="bg-gray-200 w-250 max-w-[95%] min-h-135 p-10 rounded-b-2xl">
             
         
         
@@ -29,31 +30,50 @@ export function AddHabit({addMethod}) {
             <hr className="text-gray-600 w-122.25 max-w-[95%] mx-auto my-3"/>
 
             <div className="flex flex-wrap w-175 min-h-75 mt-15 mx-auto max-w-[95%] gap-8 justify-center items-center">
-            <select
-            value={habitFreq} 
-            onChange={(e) => setHabitFreq(e.target.value)}
-            className="bg-zinc-950 text-white md:px-4 md:py-3 p-3 font-[inter] text-lg max-h-12.5 min-w-73 cursor-pointer rounded-3xl">
-                <option 
-                className=""
-                defaultValue>Choose habit frequency</option>
-                <option>Daily</option>
-                <option>Weekly</option>
-            </select>
+            
+            <motion.div
+            initial={{opacity: 0, y: 40}}
+            animate={{opacity: 1, y: 0}}
+            transition={{duration: 0.5}}
+            >
+                <select
+                value={habitFreq} 
+                onChange={(e) => setHabitFreq(e.target.value)}
+                className="bg-zinc-950 text-white md:px-4 md:py-3 p-3 font-[inter] text-lg max-h-12.5 min-w-73 cursor-pointer rounded-3xl">
+                    <option 
+                    className=""
+                    defaultValue>Choose habit frequency</option>
+                    <option>Daily</option>
+                    <option>Weekly</option>
+                </select>
+            </motion.div>
 
-            <input 
-            type="text"
-            placeholder="Enter habit..."
-            required
-            className="block bg-zinc-950 text-white placeholder:text-white md:px-4 md:py-3 p-3 font-[inter] text-lg max-h-12.5 min-w-73 rounded-3xl"
-            onChange={(e) => setHabitName(e.target.value)}
-            value={habitName}
-            />
+            <motion.div
+            initial={{opacity: 0, y: 40}}
+            animate={{opacity: 1, y: 0}}
+            transition={{duration: 0.5, delay: 0.3}}
+            >
+                <input 
+                type="text"
+                placeholder="Enter habit..."
+                required
+                className="block bg-zinc-950 text-white placeholder:text-white md:px-4 md:py-3 p-3 font-[inter] text-lg max-h-12.5 min-w-73 rounded-3xl"
+                onChange={(e) => setHabitName(e.target.value)}
+                value={habitName}
+                />
+            </motion.div>
 
-            <button 
-            onClick={handleClick}
-            className="block bg-zinc-950 text-white font-[inter] md:px-12 md:py-3 p-3 text-lg max-h-12.5 min-w-18.75 rounded-3xl cursor-pointer shadow-lg hover:shadow-2xl hover:-translate-y-1 active:scale-95 duration-300">
-                Add
-            </button>
+            <motion.div
+            
+            initial={{opacity: 0, y: 40}}
+            animate={{opacity: 1, y: 0}}
+            transition={{duration: 0.5, delay: 0.5}}>
+                <button 
+                onClick={handleClick}
+                className="block bg-zinc-950 text-white font-[inter] md:px-12 md:py-3 p-3 text-lg max-h-12.5 min-w-18.75 rounded-3xl cursor-pointer shadow-lg hover:shadow-2xl hover:-translate-y-1 active:scale-95 duration-300">
+                    Add     
+                </button>
+            </motion.div>
             
         </div>
     </div>

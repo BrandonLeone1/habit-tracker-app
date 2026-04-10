@@ -5,6 +5,7 @@ import {Routes, Route} from 'react-router-dom';
 import { DefaultView } from './components/DefaultView';
 import { Navbar } from './components/Navbar';
 import { Charts } from './components/Charts';
+import { motion } from 'framer-motion'
 
 function App() {
 
@@ -44,7 +45,11 @@ function App() {
 
   return (
     <>
-    <div className='bg-gray-400 h-screen flex flex-col justify-center items-center'>
+    <motion.div 
+    initial={{opacity: 0}}
+    animate={{opacity: 1}}
+    transition={{duration: 0.5}}
+    className='bg-white h-screen flex flex-col justify-center items-center'>
     <Navbar />
     <Routes>
       <Route path='/' element={<DefaultView />}>
@@ -65,7 +70,7 @@ function App() {
     </Routes>
       
       
-      </div>
+      </motion.div>
     </>
   )
 }

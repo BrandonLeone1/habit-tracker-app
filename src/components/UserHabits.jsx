@@ -1,9 +1,6 @@
 import { useState } from "react";
 import { StreakCalc } from "./StreakCalc";
-import { WeeklyCompletions } from "./WeeklyCompletions";
-import { WeeklyBreakDown } from "./WeeklyBreakdown";
-import { MonthlyCompletions } from "./MonthlyCompletions";
-import { MonthlyBreakDown } from "./MonthlyBreakdown";
+import {motion} from 'framer-motion'
 
 export function UserHabits ({habitsList, completeMethod, completedHabits, deleteMethod}) {
     
@@ -35,16 +32,21 @@ export function UserHabits ({habitsList, completeMethod, completedHabits, delete
     return (
         <>
 
-        <div className="bg-gray-100 w-250 max-w-[95%] min-h-135 max-h-135 rounded-b-2xl p-4 overflow-y-scroll">
+        <div className="bg-gray-200 w-250 max-w-[95%] min-h-135 max-h-135 rounded-b-2xl p-4 overflow-y-scroll">
             <div className="w-175 min-h-75 mx-auto max-w-[95%] p-6 gap-6">
                 <h2 className="text-xl text-center font-[poppins]">Your habits</h2>
                 <hr className="text-gray-600 w-122.25 max-w-full mx-auto my-3"/>
                 {
                     habitsList.map((habit => (
-                        <div key={habit.id} className="mt-10 flex flex-col relative bg-zinc-800 rounded-2xl text-white gap-8 p-8">
+                        <motion.div 
+                        initial={{opacity: 1, y: 40}}
+                        whileInView={{opacity: 1, y: 0}}
+                        viewport={{once: true, amount: 0.5}}
+                        transition={{duration: 0.5}}
+                        key={habit.id} className="mt-10 flex flex-col relative bg-zinc-800 rounded-2xl text-white gap-8 p-8">
                             <span onClick={() => handleDel(habit)} className="absolute top-1 right-4 font-[poppins] text-2xl cursor-pointer hover:scale-95 duration-75">x</span>
                             
-                            <div className="flex gap-2 justify-left items-center mt-4">
+                            <div className="flex gap-2 flex-wrap justify-left items-center mt-4">
                                 <h2 className="text-lg font-[poppins] text-center">Habit: {habit.habitTitle}</h2>
                                 <StreakCalc completedHabits={completedHabits} habitId={habit.habitTitle}/>
                             </div>
@@ -52,7 +54,7 @@ export function UserHabits ({habitsList, completeMethod, completedHabits, delete
                             
                             <input 
                             type="checkbox"
-                            className="block md:mx-0 mx-auto appearance-none w-6.25 h-6.25 bg-gray-100 rounded checked:before:content-['✔'] checked:before:block checked:before:text-2xl checked:before:text-center checked:before:-mt-1 text-black cursor-pointer checked:bg-gray-300 duration-300"
+                            className="block md:mx-0 mx-auto appearance-none w-6.25 h-6.25 bg-gray-100 rounded checked:before:content-['✔'] checked:before:block checked:before:text-xl checked:before:text-center checked:before:-mt-1 text-black cursor-pointer checked:bg-gray-300 duration-300"
                             checked={!!confirmComplete[habit.id]}
                             onChange={() => setConfirmComplete(prev => ({
                                 ...prev,
@@ -67,7 +69,7 @@ export function UserHabits ({habitsList, completeMethod, completedHabits, delete
                             
                             
 
-                        </div>
+                        </motion.div>
                     )
 
                     ))
