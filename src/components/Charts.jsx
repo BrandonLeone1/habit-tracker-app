@@ -27,8 +27,8 @@ export function Charts({habitsList, completedHabits}) {
                     transition={{duration: 0.5}}
                     key={habit.id} className="flex flex-col gap-2 mt-2">
                         <h2 className="text-lg font-[poppins] text-zinc-950">Info for habit: {habit.habitTitle}</h2>
-                        <WeeklyCompletions completedHabits={completedHabits} habitId={habit.habitTitle}/>
-                        <MonthlyCompletions completedHabits={completedHabits} habitId={habit.habitTitle}/>
+                        <WeeklyCompletions completedHabits={completedHabits} habitId={habit.id}/>
+                        <MonthlyCompletions completedHabits={completedHabits} habitId={habit.id}/>
                         
                         <div className="flex flex-row gap-3 flex-wrap mt-3">
                             <button onClick={() => setOpenWeekly(prev => ({
@@ -51,7 +51,7 @@ export function Charts({habitsList, completedHabits}) {
                         exit={{opacity: 0, height: 0}}
                         transition={{duration: 0.3}}
                         >
-                            <WeeklyBreakDown completedHabits={completedHabits} habitId={habit.habitTitle}/>
+                            <WeeklyBreakDown completedHabits={completedHabits} habitId={habit.id}/>
                         </motion.div>
                         
                         ) 
@@ -69,7 +69,7 @@ export function Charts({habitsList, completedHabits}) {
                         animate={{opacity: 1, height: 'auto'}}
                         exit={{opacity: 0, height: 0}}
                         transition={{duration: 0.3}}>
-                            <MonthlyBreakDown completedHabits={completedHabits} habitId={habit.habitTitle} />
+                            <MonthlyBreakDown completedHabits={completedHabits} habitId={habit.id} />
                             </motion.div>
                         ) 
                         }

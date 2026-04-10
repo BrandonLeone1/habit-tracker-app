@@ -6,8 +6,16 @@ import { DefaultView } from './components/DefaultView';
 import { Navbar } from './components/Navbar';
 import { Charts } from './components/Charts';
 import { motion } from 'framer-motion'
+import { collection, addDoc, onSnapshot, doc, updateDoc } from "firebase/firestore";
+import {db} from './services/Firebase'
+
+
+
+
 
 function App() {
+
+  const [user, setUser] = useState(null);
 
   const [habitsList, setHabitsList] = useState([]);
 

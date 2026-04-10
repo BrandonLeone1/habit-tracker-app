@@ -11,7 +11,7 @@ export function UserHabits ({habitsList, completeMethod, completedHabits, delete
         if (confirmComplete[habit.id] === true) {
             {/* new Date().toISOString().split("T")[0] */}
             let addCompletion = {
-                habitId: habit.habitTitle,
+                habitId: habit.id,
                 date: new Date().toLocaleDateString("en-CA"),
                 completionCount: 1 
             }
@@ -48,7 +48,7 @@ export function UserHabits ({habitsList, completeMethod, completedHabits, delete
                             
                             <div className="flex gap-2 flex-wrap justify-left items-center mt-4">
                                 <h2 className="text-lg font-[poppins] text-center">Habit: {habit.habitTitle}</h2>
-                                <StreakCalc completedHabits={completedHabits} habitId={habit.habitTitle}/>
+                                <StreakCalc completedHabits={completedHabits} habitId={habit.id}/>
                             </div>
                             <p className="text-md md:text-left font-[inter] text-center">Desired frequency: {habit.habitFrequency}</p>
                             
