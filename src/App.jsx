@@ -126,8 +126,8 @@ useEffect(() => {
 
       await Promise.all(deletions);
 
-      setHabitsList(habitsList.filter(habit => habit.habitTitle != habit2.habitTitle))
-    setCompletedHabits(completedHabits.filter(habit => habit.habitId != habit2.habitTitle))
+      setHabitsList(habitsList.filter(habit => habit.id != habit2.id))
+    setCompletedHabits(completedHabits.filter(habit => habit.id != habit2.id))
     } catch (err) {
       console.log(err)
     }
