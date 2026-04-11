@@ -2,7 +2,7 @@ import { useState } from "react";
 import { StreakCalc } from "./StreakCalc";
 import {motion} from 'framer-motion'
 
-export function UserHabits ({habitsList, completeMethod, completedHabits, deleteMethod}) {
+export function UserHabits ({habitsList, completeMethod, completedHabits, deleteMethod, user}) {
     
     const [confirmComplete, setConfirmComplete] = useState({});
 
@@ -34,6 +34,8 @@ export function UserHabits ({habitsList, completeMethod, completedHabits, delete
         <>
 
         <div className="bg-gray-200 w-250 max-w-[95%] min-h-135 max-h-135 rounded-b-2xl p-4 overflow-y-scroll">
+            { user != null ? (
+            
             <div className="w-175 min-h-75 mx-auto max-w-[95%] p-6 gap-6">
                 <h2 className="text-xl text-center font-[poppins]">Your habits</h2>
                 <hr className="text-gray-600 w-122.25 max-w-full mx-auto my-3"/>
@@ -55,7 +57,7 @@ export function UserHabits ({habitsList, completeMethod, completedHabits, delete
                             
                             <input 
                             type="checkbox"
-                            className="block md:mx-0 mx-auto appearance-none w-6.25 h-6.25 bg-gray-100 rounded checked:before:content-['✔'] checked:before:block checked:before:text-xl checked:before:text-center checked:before:-mt-1 text-black cursor-pointer checked:bg-gray-300 duration-300"
+                            className="block md:mx-0 mx-auto appearance-none w-6.25 h-6.25 bg-gray-100 rounded checked:before:content-['✓'] checked:before:block checked:before:text-2xl checked:before:font-bold checked:before:text-center checked:before:-mt-1 text-black cursor-pointer checked:bg-gray-300 duration-300"
                             checked={!!confirmComplete[habit.id]}
                             onChange={() => setConfirmComplete(prev => ({
                                 ...prev,
@@ -76,6 +78,13 @@ export function UserHabits ({habitsList, completeMethod, completedHabits, delete
                     ))
                 }
             </div>
+) : (
+            <div className="flex justify-center items-center h-full">
+                <h2 className="text-xl text-center -mt-5 font-[poppins]">Please sign in to view your habits.</h2>
+            </div>
+)
+
+}
         </div>
         </>
     );

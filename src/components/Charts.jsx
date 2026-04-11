@@ -6,17 +6,19 @@ import { useState } from "react";
 import {motion, AnimatePresence} from 'framer-motion'
 
 
-export function Charts({habitsList, completedHabits}) {
+export function Charts({habitsList, completedHabits, user}) {
 
     const [openWeekly, setOpenWeekly] = useState({});
     const [openMonthly, setOpenMonthly] = useState({});
 
     return (
         <div className="bg-gray-200 w-250 max-w-[95%] min-h-135 p-10 rounded-b-2xl overflow-y-scroll max-h-135">
-            <h2 className="font-[poppins] text-xl text-center">Charts Dashboard</h2>
+            { user != null ? (
+            <>
+            <h2 className="font-[poppins] text-xl text-center">Charts dashboard</h2>
             <hr className="text-gray-600 w-122.25 max-w-[95%] mx-auto my-3"/>
 
-            <div className="flex flex-col gap-8 w-full justify-center items-center mt-10">
+            <div className="flex flex-col gap-8 w-full justify-center items-center mt-5">
             {
                 habitsList.map((habit => (
                     
@@ -82,6 +84,13 @@ export function Charts({habitsList, completedHabits}) {
                 ))
             }
             </div>
+</>
+            ) : (
+                <div className="flex justify-center items-center h-full">
+                    <h2 className="text-xl text-center -mt-5 font-[poppins]">Please sign in to view your charts.</h2>
+                </div>
+            )
+}
         </div>
     );
 }

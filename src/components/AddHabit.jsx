@@ -1,7 +1,7 @@
 import { useState } from "react";
 import {motion} from 'framer-motion'
 
-export function AddHabit({addMethod}) {
+export function AddHabit({addMethod, user}) {
     
     const [habitFreq, setHabitFreq] = useState("");
     const [habitName, setHabitName] = useState("");
@@ -24,9 +24,9 @@ export function AddHabit({addMethod}) {
     <>
     <div className="bg-gray-200 w-250 max-w-[95%] min-h-135 p-10 rounded-b-2xl">
             
-        
-        
-            <h2 className="font-[poppins] text-xl text-center">Add a hobby</h2>
+        { user != null ? (
+        <>
+            <h2 className="font-[poppins] text-xl text-center">Add a habit</h2>
             <hr className="text-gray-600 w-122.25 max-w-[95%] mx-auto my-3"/>
 
             <div className="flex flex-wrap w-175 min-h-75 mt-15 mx-auto max-w-[95%] gap-8 justify-center items-center">
@@ -74,8 +74,15 @@ export function AddHabit({addMethod}) {
                     Add     
                 </button>
             </motion.div>
-            
+                    
         </div>
+       </> ) : (
+
+            <div className="flex justify-center items-center h-full">
+            <h2 className="text-xl text-center -mt-5 font-[poppins]">Please sign in to add a habit.</h2>
+            </div>
+        )
+}
     </div>
     </>
     );

@@ -143,18 +143,18 @@ useEffect(() => {
     className='bg-white h-screen flex flex-col justify-center items-center'>
     <Navbar user={user} />
     <Routes>
-      <Route path='/' element={<DefaultView />}>
+      <Route path='/' element={<DefaultView user={user}/>}>
 
       </Route>
 
-      <Route path='/add-habit' element={<AddHabit addMethod={addMethod}/>} >
+      <Route path='/add-habit' element={<AddHabit addMethod={addMethod} user={user}/>} >
 
       </Route>
 
-      <Route path='/habits'element={<UserHabits habitsList={habitsList} completeMethod={completeMethod} completedHabits={completedHabits} deleteMethod={deleteMethod}/>}>
+      <Route path='/habits'element={<UserHabits habitsList={habitsList} completeMethod={completeMethod} completedHabits={completedHabits} deleteMethod={deleteMethod} user={user}/>}>
       </Route>
 
-      <Route path='/charts' element={<Charts habitsList={habitsList} completedHabits={completedHabits} />}>
+      <Route path='/charts' element={<Charts habitsList={habitsList} completedHabits={completedHabits} user={user}/>}>
           
       </Route>
 
