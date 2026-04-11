@@ -12,7 +12,7 @@ export function Charts({habitsList, completedHabits, user}) {
     const [openMonthly, setOpenMonthly] = useState({});
 
     return (
-        <div className="bg-gray-200 w-250 max-w-[95%] min-h-135 p-10 rounded-b-2xl overflow-y-scroll max-h-135">
+        <div className="bg-gray-200 border-2 border-t-0 border-zinc-400 w-250 max-w-[95%] min-h-135 p-10 rounded-b-2xl overflow-y-scroll max-h-135">
             { user != null ? (
             <>
             <h2 className="font-[poppins] text-xl text-center">Charts dashboard</h2>

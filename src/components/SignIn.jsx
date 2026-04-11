@@ -27,7 +27,7 @@ export function SignIn() {
     }
 
     return (
-        <button onClick={() => handleSignIn()} className="font-[poppins] text-lg text-zinc-950 cursor-pointer md:ml-auto">Sign in</button>
+        <button onClick={() => handleSignIn()} className="font-[poppins] text-lg text-zinc-950 cursor-pointer md:ml-auto relative after:content:-[''] after:absolute after:left-0.5 after:-translate-x-0.5 after:bottom-0 after:h-0.75 after:w-full after:bg-zinc-950 after:scale-x-0 after:origin-center after:transition-transform after:duration-300 hover:after:scale-x-100">Sign in</button>
     );
 
 }

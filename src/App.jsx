@@ -5,6 +5,7 @@ import {Routes, Route} from 'react-router-dom';
 import { DefaultView } from './components/DefaultView';
 import { Navbar } from './components/Navbar';
 import { Charts } from './components/Charts';
+import { LandingPage } from './pages/LandingPage';
 import { motion } from 'framer-motion'
 import { collection, addDoc, onSnapshot, doc, updateDoc, deleteDoc, getDocs, getDoc } from "firebase/firestore";
 import {db} from './services/Firebase'
@@ -136,32 +137,76 @@ useEffect(() => {
 
   return (
     <>
-    <motion.div 
-    initial={{opacity: 0}}
-    animate={{opacity: 1}}
-    transition={{duration: 0.5}}
-    className='bg-white h-screen flex flex-col justify-center items-center'>
-    <Navbar user={user} />
+   
+    
+    
     <Routes>
-      <Route path='/' element={<DefaultView user={user}/>}>
+      
+      {/*Landing page */}
+      <Route path='/' element={<LandingPage />} />
 
-      </Route>
+      
+    
+      <Route path='/app' element={
+        <>
+         <motion.div 
+         initial={{opacity: 0}}
+         animate={{opacity: 1}}
+         transition={{duration: 0.5}}
+         className='bg-white h-screen flex flex-col justify-center items-center'>
+          <Navbar user={user} />
+          <DefaultView user={user}/>
+        </motion.div>
+        </>
+        } 
+      />
+        <Route path='/app/add-habit' element={
+          <>
+           <motion.div 
+           initial={{opacity: 0}}
+           animate={{opacity: 1}}
+           transition={{duration: 0.5}}
+           className='bg-white h-screen flex flex-col justify-center items-center'>
+            <Navbar user={user} />
+            <AddHabit addMethod={addMethod} user={user}/>
+          </motion.div>
+          </>
+          }
+        />
 
-      <Route path='/add-habit' element={<AddHabit addMethod={addMethod} user={user}/>} >
-
-      </Route>
-
-      <Route path='/habits'element={<UserHabits habitsList={habitsList} completeMethod={completeMethod} completedHabits={completedHabits} deleteMethod={deleteMethod} user={user}/>}>
-      </Route>
-
-      <Route path='/charts' element={<Charts habitsList={habitsList} completedHabits={completedHabits} user={user}/>}>
+        <Route path='/app/habits'element={
+          <>
+           <motion.div 
+           initial={{opacity: 0}}
+           animate={{opacity: 1}}
+           transition={{duration: 0.5}}
+           className='bg-white h-screen flex flex-col justify-center items-center'>
+            <Navbar user={user} />
+            <UserHabits habitsList={habitsList} completeMethod={completeMethod} completedHabits={completedHabits} deleteMethod={deleteMethod} user={user}/>
+          </motion.div>
+          </>
+          } 
+        />
           
-      </Route>
+        <Route path='/app/charts' element={
+          <>
+          <motion.div 
+           initial={{opacity: 0}}
+           animate={{opacity: 1}}
+           transition={{duration: 0.5}}
+           className='bg-white h-screen flex flex-col justify-center items-center'>
+            <Navbar user={user} />
+            <Charts habitsList={habitsList} completedHabits={completedHabits} user={user}/>
+          </motion.div>
+          </>
+        } 
+      />
+      
 
     </Routes>
       
       
-      </motion.div>
+      
     </>
   )
 }

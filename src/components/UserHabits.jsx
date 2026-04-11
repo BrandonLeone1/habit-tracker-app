@@ -33,7 +33,7 @@ export function UserHabits ({habitsList, completeMethod, completedHabits, delete
     return (
         <>
 
-        <div className="bg-gray-200 w-250 max-w-[95%] min-h-135 max-h-135 rounded-b-2xl p-4 overflow-y-scroll">
+        <div className="bg-gray-200 border-2 border-t-0 border-zinc-400 w-250 max-w-[95%] min-h-135 max-h-135 rounded-b-2xl p-4 overflow-y-scroll">
             { user != null ? (
             
             <div className="w-175 min-h-75 mx-auto max-w-[95%] p-6 gap-6">

@@ -22,7 +22,7 @@ export function AddHabit({addMethod, user}) {
     
     return (
     <>
-    <div className="bg-gray-200 w-250 max-w-[95%] min-h-135 p-10 rounded-b-2xl">
+    <div className="bg-gray-200 border-2 border-t-0 border-zinc-400 w-250 max-w-[95%] min-h-135 p-10 rounded-b-2xl">
             
         { user != null ? (
         <>

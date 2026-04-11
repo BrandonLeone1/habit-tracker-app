@@ -1,5 +1,6 @@
 import { useState } from "react";
 import {motion, AnimatePresence} from 'framer-motion';
+import { Outlet } from "react-router";
 export function DefaultView({user}) {
     
     const questions = [
@@ -23,7 +24,7 @@ export function DefaultView({user}) {
 
     return (
         <>
-        <div className="bg-gray-200 w-250 max-w-[95%] min-h-135 max-h-135 p-10 rounded-b-2xl overflow-y-scroll">
+        <div className="bg-gray-200 border-2 border-t-0 border-zinc-400 w-250 max-w-[95%] min-h-135 max-h-135 p-10 rounded-b-2xl overflow-y-scroll">
             
             { user != null ? (
             <h2 className="font-[poppins] text-xl text-center">Habit Tracker: Hi, {user.displayName}</h2>
@@ -72,6 +73,7 @@ export function DefaultView({user}) {
 
                 }
             </div>
+            
         </div>
         
         </>
