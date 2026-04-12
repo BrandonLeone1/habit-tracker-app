@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/all';
@@ -8,6 +8,7 @@ import '@splidejs/react-splide/css';
 import {AutoScroll} from '@splidejs/splide-extension-auto-scroll';
 import Lenis from "lenis";
 import { useEffect } from 'react';
+import {motion, AnimatePresence} from 'framer-motion';
 
 gsap.registerPlugin(useGSAP);
 gsap.registerPlugin(ScrollTrigger);
@@ -50,6 +51,8 @@ export function LandingPage() {
   const reviewsCarousel = useRef();
 
   const signUpSection = useRef();
+
+  const [isOpen, setIsOpen] = useState(false);
 
   const customerReviews = [
     {
@@ -303,13 +306,24 @@ useGSAP(() => {
     <>
   
         <header className='w-full bg-gray-100/30 backdrop-blur-xs sticky top-0 z-9999'>
-            <nav className="flex flex-col md:flex-row flex-wrap gap-8 p-6 justify-between w-400 mx-auto max-w-[95%]">
+            <nav className="flex flex-row flex-wrap gap-8 p-6 justify-between w-400 mx-auto max-w-[95%]">
                 
                 <div className='nav-logo'>
                     <img src='h.png' className='w-6.25' />
                 </div>
 
-                <div className='nav-links font-[poppins] text-lg flex flex-col md:flex-row flex-wrap gap-6'>
+                <div className='flex flex-col gap-2 items-center justify-center md:hidden cursor-pointer' onClick={() => setIsOpen(prev => !prev)}>
+                    <span className={`h-[3px] w-[25px] block relative bg-black  ${isOpen && 'rotate-25 translate-y-1'} duration-700`}>
+
+                    </span>
+
+                    <span className={`h-[3px] w-[25px] block relative bg-black  ${isOpen && '-rotate-25 -translate-y-1.5'} duration-700`}>
+
+                    </span>
+
+                </div>
+
+                <div className='nav-links font-[poppins] text-lg flex-col md:flex-row flex-wrap gap-8 hidden md:flex'>
                     <a href='#about' className='link cursor-pointer'>About</a>
                     <a href='#features' className='link cursor-pointer'>Features</a>
                     <a href='#pricing' className='link cursor-pointer'>Pricing</a>
@@ -317,17 +331,37 @@ useGSAP(() => {
                     <Link to='/app' target='_blank' className='link cursor-pointer'>Start now</Link>
                 </div>
             </nav>
+            <AnimatePresence>
+            { isOpen && (
+           
+                
+                <motion.div 
+                initial={{opacity: 0, height: 0}}
+                animate={{opacity: 1, height: 'auto'}}
+                exit={{opacity: 0, height: 0}}
+                transition={{duration: 1}}
+                className='flex flex-col md:hidden gap-6 px-6 w-400 max-w-[95%] mx-auto text-lg'>
+                    <a href='#about' className='link cursor-pointer'>About</a>
+                    <a href='#features' className='link cursor-pointer'>Features</a>
+                    <a href='#pricing' className='link cursor-pointer'>Pricing</a>
+                    <a href="#testimonials" className='link cursor-pointer'>Testimonials</a>
+                    <Link to='/app' target='_blank' className='link cursor-pointer pb-6'>Start now</Link>
+                </motion.div>
+          
+            )
+            }
+            </AnimatePresence>
         </header>
 
         <section id="about" className='hero-section p-8 overflow-x-hidden bg-linear-to-br from-white via-blue-50 to-blue-200 h-screen flex flex-col justify-center items-center'>
 
-            <div className='flex w-400 mx-auto max-w-[95%] flex-col md:flex-row -mt-20 gap-8'>
+            <div className='flex w-400 mx-auto max-w-[95%] flex-col lg:flex-row -mt-10 gap-8'>
 
                 <div ref={heroContainer} className='flex lg:-mt-20 flex-col text-center md:text-left justify-center items-center gap-6'>
 
                   
                         <h1 className='lg:text-6xl md:text-4xl font-[poppins] font-semibold text-3xl'><span className='letter inline-block'>T</span><span className='letter inline-block'>r</span><span className='letter inline-block'>a</span><span className='letter inline-block'>c</span><span className='letter inline-block'>k</span> <span className='letter inline-block'> Y</span><span className='letter inline-block'>o</span><span className='letter inline-block'>u</span><span className='letter inline-block'>r</span> <span className='letter inline-block'> H</span><span className='letter inline-block'>a</span><span className='letter inline-block'>b</span><span className='letter inline-block'>i</span><span className='letter inline-block'>t</span><span className='letter inline-block'>s</span></h1>
-                        <p className='md:max-w-[50%] para font-[inter] text-lg text-center'>Stay on top of and get visual feedback regarding your habits, enhancing your motivation, productivity, and overall self-improvement.</p>
+                        <p className='md:max-w-[80%] w-full para font-[inter] text-lg text-center'>Stay on top of and get visual feedback regarding your habits, enhancing your motivation, productivity, and overall self-improvement.</p>
                         
                         <div className='flex flex-row gap-6'>
                             <Link to='/app' target='_blank' className='para bg-zinc-950 text-white opacity-0 px-4 py-2 rounded-3xl font-[poppins] text-lg shadow-lg hover:shadow-2xl duration-300 cursor-pointer'>Try for free</Link>
@@ -361,13 +395,13 @@ useGSAP(() => {
                 </div>
 
                 <div ref={featureCardsScroll} className='flex md:flex-row p-8 justify-around mx-auto flex-col gap-8'>
-                    <div className='flex flex-col gap-4 max-w-[310px] rounded-2xl bg-zinc-950 text-white font-[poppins] p-8 hover:scale-105  duration-300 shadow-xl hover:shadow-2xl'>
+                    <div className='flex flex-col gap-4 max-w-[310px] mx-auto rounded-2xl bg-zinc-950 text-white font-[poppins] p-8 hover:scale-105  duration-300 shadow-xl hover:shadow-2xl'>
                         <h3>See your streaks!</h3>
                         <p>Habit Tracker automatically keeps count of how many days in a row you have completed a habit. View your current steak within your 'habits' tab!</p>
                         <p>Miss a day and your streak will reset - encouraging you to stay consistent and receive feedback.</p>
                     </div>
 
-                    <div className='flex flex-col gap-4 max-w-[310px] rounded-2xl bg-zinc-950 text-white font-[poppins] p-8 hover:scale-105  duration-300 shadow-xl hover:shadow-2xl'>
+                    <div className='flex flex-col gap-4 max-w-[310px] mx-auto rounded-2xl bg-zinc-950 text-white font-[poppins] p-8 hover:scale-105  duration-300 shadow-xl hover:shadow-2xl'>
                         <h3>Other features!</h3>
                         <p>Google OAuth is implemented via Firebase Authentication. Log into your Google account securely and all habits you add and complete will be saved across devices.</p>
                         <p>This allows for easy completions of habits no matter where you are so you do not forget to log them.</p>
@@ -378,7 +412,7 @@ useGSAP(() => {
         </section>
 
 
-        <section id="pricing" className='flex overflow-x-hidden p-8 bg-linear-to-br from-white via-blue-50 to-blue-200 flex-col gap-16'>
+        <section id="pricing" className='flex overflow-x-hidden overflow-y-hidden p-8 bg-linear-to-br from-white via-blue-50 to-blue-200 flex-col gap-16'>
 
             <div className='flex flex-col gap-12 mt-20 text-center mx-auto'>
                     <h2 className='text-2xl font-[poppins] text-center'>Pricing</h2>
@@ -509,8 +543,7 @@ useGSAP(() => {
 
         </section>
 
-        <section className='bg-gradient-to-t from-white to-zinc-100
-dark:from-black dark:to-zinc-900 p-8'>
+        <section className='bg-zinc-950 p-8'>
 
             <div className='flex md:flex-row flex-col gap-4 text-gray-200 font-[poppins] justify-center items-start md:items-center h-full'>
                     <a href="#about">About</a>
@@ -519,6 +552,7 @@ dark:from-black dark:to-zinc-900 p-8'>
                     <a href='#testimonials'>Testimonials</a>
                     <Link to='/app'>Go to app</Link>
             </div>
+            <p className='text-white md:text-center font-[poppins] mt-4'>Brandon Leone</p>
         </section>
 
        
