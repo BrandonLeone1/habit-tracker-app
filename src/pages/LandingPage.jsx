@@ -361,7 +361,7 @@ useGSAP(() => {
 
                   
                         <h1 className='lg:text-6xl md:text-4xl font-[poppins] font-semibold text-3xl'><span className='letter inline-block'>T</span><span className='letter inline-block'>r</span><span className='letter inline-block'>a</span><span className='letter inline-block'>c</span><span className='letter inline-block'>k</span> <span className='letter inline-block'> Y</span><span className='letter inline-block'>o</span><span className='letter inline-block'>u</span><span className='letter inline-block'>r</span> <span className='letter inline-block'> H</span><span className='letter inline-block'>a</span><span className='letter inline-block'>b</span><span className='letter inline-block'>i</span><span className='letter inline-block'>t</span><span className='letter inline-block'>s</span></h1>
-                        <p className='md:max-w-[80%] w-full para font-[inter] text-lg text-center'>Stay on top of and get visual feedback regarding your habits, enhancing your motivation, productivity, and overall self-improvement.</p>
+                        <p className='md:max-w-[80%] w-full para font-[inter] text-lg text-center'>Stay on top of and get visual feedback regarding your habits - enhancing your motivation, productivity, and overall self-improvement.</p>
                         
                         <div className='flex flex-row gap-6'>
                             <Link to='/app' target='_blank' className='para bg-zinc-950 text-white opacity-0 px-4 py-2 rounded-3xl font-[poppins] text-lg shadow-lg hover:shadow-2xl duration-300 cursor-pointer'>Try for free</Link>
@@ -397,8 +397,8 @@ useGSAP(() => {
                 <div ref={featureCardsScroll} className='flex md:flex-row p-8 justify-around mx-auto flex-col gap-8'>
                     <div className='flex flex-col gap-4 max-w-[310px] mx-auto rounded-2xl bg-zinc-950 text-white font-[poppins] p-8 hover:scale-105  duration-300 shadow-xl hover:shadow-2xl'>
                         <h3>See your streaks!</h3>
-                        <p>Habit Tracker automatically keeps count of how many days in a row you have completed a habit. View your current steak within your 'habits' tab!</p>
-                        <p>Miss a day and your streak will reset - encouraging you to stay consistent and receive feedback.</p>
+                        <p>Habit Tracker automatically keeps count of how many days in a row you have completed a habit. View your current streak within your 'habits' tab!</p>
+                        <p>Miss a day and your streak will reset; encouraging you to stay consistent & receive feedback.</p>
                     </div>
 
                     <div className='flex flex-col gap-4 max-w-[310px] mx-auto rounded-2xl bg-zinc-950 text-white font-[poppins] p-8 hover:scale-105  duration-300 shadow-xl hover:shadow-2xl'>
